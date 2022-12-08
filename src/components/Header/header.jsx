@@ -1,18 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import "./header.css";
 
-export default () => {
-    let user = localStorage.getItem("user8");
+export default ({user,setUser}) => {
+     
+
+    //let user = localStorage.getItem("user8");
     const logIn = (e)=>{
         e.preventDefault();
         let name = prompt("Как вас зовут?");
         if(name){
             localStorage.setItem("user8", name);
+            setUser(name);
         }
     }
     const logOut = (e)=>{
         e.preventDefault();
         localStorage.removeItem("user8");
+        setUser("");
     }
     return (
         <header>
