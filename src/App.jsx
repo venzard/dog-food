@@ -9,11 +9,14 @@ import Catalog from "./pages/Catalog";
 import Home from "./pages/Home";
 import Modal from "./components/Modal";
 
+import {Api} from "./Api"
+
 const smiles =["^-^", "=)","0_o",":-)", "@_@", "^-0", "-_-"]
 
 const App  =()=>{  
     const [user, setUser] = useState(localStorage.getItem("user8"));
     const [modalActive, setModalActive] = useState(false);
+    const [api, setApi] = useState(new Api(""));
     return (
         <>
             <div className="container">
@@ -28,7 +31,7 @@ const App  =()=>{
                 </main>
                 <Footer/>
             </div> 
-            <Modal isActive={modalActive} setState={setModalActive}/>
+            <Modal isActive={modalActive} setState={setModalActive} api={api}/>
         </>
     )
 }
