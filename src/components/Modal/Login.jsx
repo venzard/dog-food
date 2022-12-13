@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default ({change, api, close}) => {
+export default ({change, api, close, setToken}) => {
     const [inp1, setInp1] = useState("");
     const [inp2, setInp2] = useState("");
 
@@ -14,6 +14,9 @@ export default ({change, api, close}) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                localStorage.setItem("user8", data.data.name);
+                localStorage.setItem("token8", data.token);
+                setToken(data.token);
                 setInp1("");
                 setInp2("");
                 close(false);
