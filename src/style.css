@@ -11,13 +11,13 @@ a{
 .container{
     min-height: 100vh;
     display: grid;
-    grid-template-rows: 100px auto 50px;
+    grid-template-rows: 100px auto auto;
 }
 
-.container>*{
+/*.container>*{
     padding: 0 calc(50% - 600px);
 }
-
+*/
 .cards{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -25,9 +25,9 @@ a{
 }
 
 @media (max-width: 1260px) {
-    .container>*{
+    /*.container>*{
         padding: 0 30px;
-    }
+    }*/
     .cards{
         grid-template-columns: repeat(3, 1fr);
     }

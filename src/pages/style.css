@@ -1,0 +1,60 @@
+.hero{
+    background-color: rgb(243, 231, 5) ;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+}
+.hero-title{
+    background-color: rgb(243, 231, 5) ;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    flex-direction: column;
+    padding: 0 calc(50% - 450px);
+    margin-bottom: 125px;
+}
+.hero-title button{
+    width: 100px;
+    font-family: 'Raleway', sans—serif;
+    font-size: 15px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 15px;
+}
+.hero-title button:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+@media (max-width: 1260px) {
+    .hero-title{
+        padding: 0 30px;
+    }
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 calc(50% - 450px);
+    flex-wrap: wrap;
+}
+
+.ad{
+    border-radius: 15px;
+    scale: 90%;
+}
+.ad1{
+    border-radius: 15px;
+    scale: 70%;
+    margin-top: -100px;
+}
+
+.ad-double{
+    display: flex;
+    justify-content: space-evenly;
+
+}

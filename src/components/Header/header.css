@@ -4,6 +4,13 @@ header{
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    padding: 0 calc(50% - 600px);
+}
+
+@media (max-width: 1260px) {
+    .header{
+        padding: 0 30px;
+    }
 }
 
 .logo{
