@@ -23,8 +23,152 @@ class Api {
             body: JSON.stringify(body)
        });
     }
+    resetPassword() {
+        return fetch(`${this.path}/password-reset/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
+            }
+        });
+    }
+    changePassword(body) {
+        return fetch(`${this.path}/password-reset/${this._id}/${this.token}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
+            },
+            body: JSON.stringify(body)
+        });
+    }
+    getUsers() {
+        return fetch(`${this.path}/v2/group-8/users`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getUserById() {
+        return fetch(`${this.path}/v2/group-8/users/${this._id}`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getUserByToken() {
+        return fetch(`${this.path}/v2/group-8/users/me`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    changeUserInfo(body) {
+        return fetch(`${this.path}/v2/group-8/users/me`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    changeUserAvatar(body) {
+        return fetch(`${this.path}/v2/group-8/users/me/avatar`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
+            },
+            body: JSON.stringify(body)
+        })
+    }
     getProducts() {
         return fetch(`${this.path}/products`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getProductById() {
+        return fetch(`${this.path}/products/${this.id}`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    addProduct(body) {
+        return fetch(`${this.path}/products`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    modifyProduct(body) {
+        return fetch(`${this.path}/products/${this._id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    deleteProduct() {
+        return fetch(`${this.path}/products/${this._id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    addLike(body) {
+        return fetch(`${this.path}/products/likes/${this._id}`, {
+            method: "PUT",
+            headers: {
+                "authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    deleteLike() {
+        return fetch(`${this.path}/products/likes/${this._id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    addReview(body) {
+        return fetch(`${this.path}/products/review/${this._id}`, {
+            method: "POST",
+            headers: {
+                "authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+    }
+    deleteReview() {
+        return fetch(`${this.path}/products/review/${this._id}/${this.reviews.id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getReviews() {
+        return fetch(`${this.path}/products/review/`, {
+            headers: {
+                "authorization": `Bearer ${this.token}`
+            }
+        })
+    }
+    getProductReview() {
+        return fetch(`${this.path}/products/review/${this.id}`, {
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
