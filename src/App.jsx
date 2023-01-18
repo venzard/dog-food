@@ -10,6 +10,8 @@ import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import {Api} from "./Api";
+import Ctx from "./Ctx";
+
 const smiles = [<span>^_^</span>, "=)", "O_o", ";(", "^_0", "@_@", "–_–"];
 const App = () => {
     const [user, setUser] = useState(localStorage.getItem("user8"));
@@ -57,11 +59,16 @@ const App = () => {
     }, [goods])
 
     return (
-        <>
+        <Ctx.Provider value={{
+            user: user,
+            token: token,
+            api: api,
+            setUser: setUser,
+            setToken: setToken,
+            setApi: setApi
+        }}>
             <div className="container">
                 <Header 
-                    user={user} 
-                    setUser={setUser} 
                     goods={goods}
                     searchGoods={setVisibleGoods}
                     setModalActive={setModalActive}
@@ -71,7 +78,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home data={smiles}/>}/>
                         <Route path="/catalog" element={<Catalog data={visibleGoods}/>}/>
-                        <Route path="/profile" element={<Profile setUser={setUser} user={user}/>}/>
+                        <Route path="/profile" element={<Profile/>}/>
                         <Route path="/catalog/:id" element={<Product/>}/>
                     </Routes>
                 </main>
@@ -81,8 +88,8 @@ const App = () => {
                 isActive, setState - параметры, которые работают внутри компонента Modal
                 modalActive, setModalActive - значения, которые сохраняются внутри параметров
             */}
-            <Modal isActive={modalActive} setState={setModalActive} api={api} setToken={setToken}/>
-        </>
+            <Modal isActive={modalActive} setState={setModalActive}/>
+        </Ctx.Provider>
     )
 }
 export default App;
