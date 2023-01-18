@@ -1,6 +1,7 @@
 {
   "name": "dog-food",
   "version": "0.1.0",
+  "homepage": "/dogfood/",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
