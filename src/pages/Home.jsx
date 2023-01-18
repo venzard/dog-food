@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/Card";
 import Ads from "../components/Ads/ads";
 import {Link} from "react-router-dom";
-import "./style.css"
+/*import "./style.css"*/
 
 
 export default ({data})=>{

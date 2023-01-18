@@ -4,8 +4,8 @@ import Search from "../Search/search";
 import "./header.css";
 import Ctx from "../../Ctx";
 
-export default ({goods, searchGoods, setModalActive}) => {
-    const {user, setUser} = useContext(Ctx);
+export default () => {
+    const {user, setUser, setModalActive} = useContext(Ctx);
     const logIn = (e) => {
         e.preventDefault();
         setModalActive(prev => !prev);
@@ -17,11 +17,11 @@ export default ({goods, searchGoods, setModalActive}) => {
     }
     return <header>
         <Link className="logo" to="/">DogFood</Link>
-        <Search data={goods} searchGoods={searchGoods}/>
+        <Search/>
         {/* <input type="search" placeholder="Поиск..." className="search"/> */}
         <nav className="menu">
             {/* true && true */}
-            {user && <Link to="/profile">{user}</Link>}
+            {user && user.name && <Link to="/profile">{user.name}</Link>}
             {!user && <a href="" onClick={logIn}>Войти</a>}
             {user && <a href="" onClick={logOut}>Выйти</a>}
         </nav>

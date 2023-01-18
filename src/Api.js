@@ -90,8 +90,8 @@ class Api {
             }
         })
     }
-    getProductById() {
-        return fetch(`${this.path}/products/${this.id}`, {
+    getProduct(id) {
+        return fetch(`${this.path}/products/${id}`, {
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
@@ -101,7 +101,8 @@ class Api {
         return fetch(`${this.path}/products`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "authorization": `Bearer ${this.token}`
             },
             body: JSON.stringify(body)
         })
@@ -116,8 +117,8 @@ class Api {
             body: JSON.stringify(body)
         })
     }
-    deleteProduct() {
-        return fetch(`${this.path}/products/${this._id}`, {
+    deleteProduct(id) {
+        return fetch(`${this.path}/products/${id}`, {
             method: "DELETE",
             headers: {
                 "authorization": `Bearer ${this.token}`

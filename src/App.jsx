@@ -12,12 +12,16 @@ import Product from "./pages/Product";
 import {Api} from "./Api";
 import Ctx from "./Ctx";
 
-//const PATH = "/";
-const PATH = "/dog-food/";
+const PATH = "/";
+//const PATH = "/dog-food/";
 
 const smiles = [<span>^_^</span>, "=)", "O_o", ";(", "^_0", "@_@", "–_–"];
 const App = () => {
-    const [user, setUser] = useState(localStorage.getItem("user8"));
+    let usr = localStorage.getItem("user8");
+    if (usr) {
+        usr = JSON.parse(usr);
+    }
+    const [user, setUser] = useState(usr);
     const [token, setToken] = useState(localStorage.getItem("token8"));
     const [modalActive, setModalActive] = useState(false);
     const [api, setApi] = useState(new Api(token));
@@ -25,13 +29,10 @@ const App = () => {
     const [visibleGoods, setVisibleGoods] = useState(goods);
 
     useEffect(() => {
-        console.log("Hello!")
-        console.log(token);
         if (token) {
             api.getProducts()
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     setGoods(data.products);
                 })
         }
@@ -39,7 +40,11 @@ const App = () => {
     useEffect(() => {
         console.log("Change token");
         setApi(new Api(token));
-        setUser(localStorage.getItem("user8"));
+        let usr = localStorage.getItem("user8");
+        if (usr) {
+            usr = JSON.parse(usr);
+        }
+        setUser(usr);
     }, [token])
     useEffect(() => {
         if (!user) {
@@ -66,21 +71,24 @@ const App = () => {
             user: user,
             token: token,
             api: api,
+            modalActive: modalActive,
+            goods: goods,
+            visibleGoods: visibleGoods,
             setUser: setUser,
             setToken: setToken,
-            setApi: setApi
+            setApi: setApi,
+            setModalActive: setModalActive,
+            setGoods: setGoods,
+            setVisibleGoods,
+            PATH: PATH
         }}>
             <div className="container">
-                <Header 
-                    goods={goods}
-                    searchGoods={setVisibleGoods}
-                    setModalActive={setModalActive}
-                />
+                <Header/>
                 <main>
                     {/* {user ? <Catalog data={goods}/> : <Home data={smiles}/>} */}
                     <Routes>
                         <Route path={PATH} element={<Home data={smiles}/>}/>
-                        <Route path={PATH +  "/catalog"} element={<Catalog data={visibleGoods}/>}/>
+                        <Route path={PATH +  "/catalog"} element={<Catalog data={smiles}/>}/>
                         <Route path={PATH + "/profile"} element={<Profile/>}/>
                         <Route path={PATH +"/catalog/:id"} element={<Product/>}/>
                     </Routes>
@@ -91,7 +99,7 @@ const App = () => {
                 isActive, setState - параметры, которые работают внутри компонента Modal
                 modalActive, setModalActive - значения, которые сохраняются внутри параметров
             */}
-            <Modal isActive={modalActive} setState={setModalActive}/>
+            <Modal/>
         </Ctx.Provider>
     )
 }
