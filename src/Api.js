@@ -117,7 +117,7 @@ class Api {
             body: JSON.stringify(body)
         })
     }
-    deleteProduct(id) {
+    delProduct(id) {
         return fetch(`${this.path}/products/${id}`, {
             method: "DELETE",
             headers: {

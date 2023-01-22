@@ -1,18 +1,21 @@
-import React from "react";
-import "./index.css"
+import React, {useContext} from "react";
+import "./index.css";
+import Ctx from "../../Ctx";
 
-export default ({text, like}) =>{
-    console.log(like)
-    return(
-        <div className="card">
-            {text} 
-            <span className="card__heart">
-                {
-                    like 
-                    ? <i className="fa-solid fa-heart"></i>
-                    : <i className="fa-regular fa-heart"></i>
-                }
-            </span>
-        </div>
-    )
+export default ({name, pictures, price, author}) => {
+    const {user} = useContext(Ctx);
+    const like = author._id === user.id;
+    return <div className="card">
+        <img src={pictures} alt={name} style={{height: "100px"}}/>
+        {name}
+        <h6>{price} Руб.</h6>
+        <button className="btn">Купить</button>
+        <span className="card__heart">
+            {
+                like 
+                ? <i className="fa-solid fa-heart"></i>
+                : <i className="fa-regular fa-heart"></i>
+            }
+        </span>
+    </div>
 }
