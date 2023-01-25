@@ -11,6 +11,7 @@ import Catalog from "./pages/Catalog.jsx";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import AddForm from "./pages/AddForm";
+import Favorites from "./pages/Favorites";
 
 import {Api} from "./Api";
 import Ctx from "./Ctx";
@@ -30,6 +31,7 @@ const App = () => {
     const [api, setApi] = useState(new Api(token));
     const [goods, setGoods] = useState([]);
     const [visibleGoods, setVisibleGoods] = useState(goods);
+    const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
         if (token) {
@@ -67,6 +69,9 @@ const App = () => {
     }, [api])
     useEffect(() => {
         setVisibleGoods(goods);
+        setFavorites(goods.filter(el => {
+            return el.likes.includes(user._id);
+        }))
     }, [goods])
 
     return (
@@ -77,12 +82,14 @@ const App = () => {
             modalActive: modalActive,
             goods: goods,
             visibleGoods: visibleGoods,
+            favorites: favorites,
             setUser: setUser,
             setToken: setToken,
             setApi: setApi,
             setModalActive: setModalActive,
             setGoods: setGoods,
-            setVisibleGoods,
+            setVisibleGoods: setVisibleGoods,
+            setFavorites: setFavorites,
             PATH: PATH
         }}>
             <div className="wrapper">
@@ -91,18 +98,15 @@ const App = () => {
                     {/* {user ? <Catalog data={goods}/> : <Home data={smiles}/>} */}
                     <Routes>
                         <Route path={PATH} element={<Home data={smiles}/>}/>
-                        <Route path={PATH +  "/catalog"} element={<Catalog data={smiles}/>}/>
-                        <Route path={PATH + "/profile"} element={<Profile/>}/>
-                        <Route path={PATH +"/catalog/:id"} element={<Product/>}/>
+                        <Route path={PATH +  "catalog"} element={<Catalog data={smiles}/>}/>
+                        <Route path={PATH + "profile"} element={<Profile/>}/>
+                        <Route path={PATH +"catalog/:id"} element={<Product/>}/>
                         <Route path={PATH + "add"} element={<AddForm/>}/>
+                        <Route path={PATH + "favorites"} element={<Favorites/>}/>
                     </Routes>
                 </main>
                 <Footer/>
             </div>
-            {/* 
-                isActive, setState - параметры, которые работают внутри компонента Modal
-                modalActive, setModalActive - значения, которые сохраняются внутри параметров
-            */}
             <Modal/>
         </Ctx.Provider>
     )

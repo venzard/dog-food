@@ -13,7 +13,7 @@ export default ({author, rating, created_at, text}) => {
         return stars;
     }
     return <>
-        {/* <h3>{author || ""}</h3> */}
+        {<h3>{author || ""}</h3>}
         <div>{text}</div>
         <div>{setRating(rating)}</div>
         <div>{new Date(created_at).toLocaleString()}</div>

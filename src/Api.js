@@ -49,8 +49,8 @@ class Api {
             }
         })
     }
-    getUserById() {
-        return fetch(`${this.path}/v2/group-8/users/${this._id}`, {
+    getUser(id) {
+        return fetch(`${this.path}/v2/group-8/users/${id}`, {
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
@@ -107,8 +107,8 @@ class Api {
             body: JSON.stringify(body)
         })
     }
-    modifyProduct(body) {
-        return fetch(`${this.path}/products/${this._id}`, {
+    modifyProduct(id,body) {
+        return fetch(`${this.path}/products/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -125,26 +125,16 @@ class Api {
             }
         })
     }
-    addLike(body) {
-        return fetch(`${this.path}/products/likes/${this._id}`, {
-            method: "PUT",
-            headers: {
-                "authorization": `Bearer ${this.token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-    }
-    deleteLike() {
-        return fetch(`${this.path}/products/likes/${this._id}`, {
-            method: "DELETE",
+    setLike(id, isLike) {
+        return fetch(`${this.path}/products/likes/${id}`, {
+            method: isLike ? "DELETE" : "PUT",
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
         })
     }
-    addReview(body) {
-        return fetch(`${this.path}/products/review/${this._id}`, {
+    addReview(id,body) {
+        return fetch(`${this.path}/products/review/${id}`, {
             method: "POST",
             headers: {
                 "authorization": `Bearer ${this.token}`,
@@ -153,8 +143,8 @@ class Api {
             body: JSON.stringify(body)
         })
     }
-    deleteReview() {
-        return fetch(`${this.path}/products/review/${this._id}/${this.reviews.id}`, {
+    deleteReview(prodId,id) {
+        return fetch(`${this.path}/products/review/${prodId}/${id}`, {
             method: "DELETE",
             headers: {
                 "authorization": `Bearer ${this.token}`
@@ -168,8 +158,8 @@ class Api {
             }
         })
     }
-    getProductReview() {
-        return fetch(`${this.path}/products/review/${this.id}`, {
+    getProductReview(id) {
+        return fetch(`${this.path}/products/review/${id}`, {
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
