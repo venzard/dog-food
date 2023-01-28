@@ -12,6 +12,7 @@
 }
 
 .modal {
+    height: auto;
     width: 300px;
     background-color: #fff;
     padding: 20px;
@@ -70,9 +71,16 @@ button.btn{
     height: 30px;
     border-radius: 10px;
     background-color: rgb(243, 231, 5);
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
+
 button.link{
     background-color: transparent;
     border: 1px solid rgb(243, 231, 5);
     box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
