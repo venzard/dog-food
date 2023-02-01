@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import AddForm from "./pages/AddForm";
 import Favorites from "./pages/Favorites";
+import Fake from "./pages/Fake";
 
 import {Api} from "./Api";
 import Ctx from "./Ctx";
@@ -70,7 +71,7 @@ const App = () => {
     useEffect(() => {
         setVisibleGoods(goods);
         setFavorites(goods.filter(el => {
-            return el.likes.includes(user._id);
+            return el.likes && el.likes.includes(user._id);
         }))
     }, [goods])
 
@@ -94,7 +95,7 @@ const App = () => {
         }}>
             <div className="wrapper">
                 <Header/>
-                <main>
+                <main className="py-4">
                     {/* {user ? <Catalog data={goods}/> : <Home data={smiles}/>} */}
                     <Routes>
                         <Route path={PATH} element={<Home data={smiles}/>}/>
@@ -103,7 +104,13 @@ const App = () => {
                         <Route path={PATH +"catalog/:id"} element={<Product/>}/>
                         <Route path={PATH + "add"} element={<AddForm/>}/>
                         <Route path={PATH + "favorites"} element={<Favorites/>}/>
+                        <Route path={PATH + "fake/:n/:title"} element={<Fake/>}/>
                     </Routes>
+                    {/* <ul>
+                        {smiles.map((el,i) => <li key={el}>
+                            <Link to={`${PATH}fake/${i+1}/${el}`}>{el}</Link>
+                        </li>)}
+                    </ul> */}
                 </main>
                 <Footer/>
             </div>

@@ -8,7 +8,7 @@ import Pagination from "../components/Pagination";
 
 export default () => {
     const {favorites, PATH} = useContext(Ctx);
-    const paginate = usePagination(favorites, 3);
+    const paginate = usePagination(favorites, 8);
     return <>
         {favorites.length > 0 
             ? <>

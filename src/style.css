@@ -8,6 +8,10 @@ a{
     color: inherit;
 }
 
+a:hover {
+    color: inherit;
+}
+
 .wrapper{
     min-height: 100vh;
     display: grid;
@@ -22,6 +26,7 @@ a{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2em;
+    align-items: stretch;
 }
 
 @media (max-width: 1260px) {

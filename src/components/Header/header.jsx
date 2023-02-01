@@ -26,7 +26,8 @@ export default () => {
             {user && <Link to={PATH + "add"}><PlusCircle style={{fontSize: "20px"}}/></Link>}
             {user && <Link to={PATH + "favorites"} className="badge-link">
                 <HeartFill style={{fontSize: "20px"}}/>
-                <Badge>{favorites.length}</Badge>
+                <Badge bg="light" text="dark">{favorites.length}</Badge>
+                {/* <Badge>{favorites.length}</Badge> */}
             </Link>}
             {user && user.name && <Link to={PATH + "profile"}>{user.name}</Link>}
             {!user && <a href="" onClick={logIn}>Войти</a>}
