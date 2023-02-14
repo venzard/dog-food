@@ -20,6 +20,7 @@ export default ({data}) => {
                             <Card key={"card_" + i} {...el}/>
                         </Link>)}
                     </div>
+                    <Pagination hook={paginate}/>
                 </>
                 : <div className="empty-block">
                     <EmojiFrown/>

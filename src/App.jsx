@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import AddForm from "./pages/AddForm";
 import Favorites from "./pages/Favorites";
-import Fake from "./pages/Fake";
+import Basket from "./pages/Basket";
 
 import {Api} from "./Api";
 import Ctx from "./Ctx";
@@ -33,6 +33,7 @@ const App = () => {
     const [goods, setGoods] = useState([]);
     const [visibleGoods, setVisibleGoods] = useState(goods);
     const [favorites, setFavorites] = useState([]);
+    const [basket, setBasket] = useState(localStorage.getItem("basket8") ? JSON.parse(localStorage.getItem("basket8")) : []);
 
     useEffect(() => {
         if (token) {
@@ -60,10 +61,10 @@ const App = () => {
     }, [user])
     useEffect(() => {
         if (token) {
-            // загрузить данные с сервера
             api.getProducts()
                 .then(res => res.json())
                 .then(data => {
+                    setVisibleGoods(data.products);
                     setGoods(data.products);
                 })
         }
@@ -74,6 +75,10 @@ const App = () => {
             return el.likes && el.likes.includes(user._id);
         }))
     }, [goods])
+
+    useEffect(() => {
+        localStorage.setItem("basket8", JSON.stringify(basket));
+    }, [basket]);
 
     return (
         <Ctx.Provider value={{
@@ -91,12 +96,13 @@ const App = () => {
             setGoods: setGoods,
             setVisibleGoods: setVisibleGoods,
             setFavorites: setFavorites,
-            PATH: PATH
+            PATH: PATH,
+            basket,
+            setBasket
         }}>
             <div className="wrapper">
                 <Header/>
                 <main className="py-4">
-                    {/* {user ? <Catalog data={goods}/> : <Home data={smiles}/>} */}
                     <Routes>
                         <Route path={PATH} element={<Home data={smiles}/>}/>
                         <Route path={PATH +  "catalog"} element={<Catalog data={smiles}/>}/>
@@ -104,13 +110,8 @@ const App = () => {
                         <Route path={PATH +"catalog/:id"} element={<Product/>}/>
                         <Route path={PATH + "add"} element={<AddForm/>}/>
                         <Route path={PATH + "favorites"} element={<Favorites/>}/>
-                        <Route path={PATH + "fake/:n/:title"} element={<Fake/>}/>
+                        <Route path={PATH + "basket"} element={<Basket/>}/>
                     </Routes>
-                    {/* <ul>
-                        {smiles.map((el,i) => <li key={el}>
-                            <Link to={`${PATH}fake/${i+1}/${el}`}>{el}</Link>
-                        </li>)}
-                    </ul> */}
                 </main>
                 <Footer/>
             </div>
