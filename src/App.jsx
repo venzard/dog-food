@@ -33,6 +33,7 @@ const App = () => {
     const [goods, setGoods] = useState([]);
     const [visibleGoods, setVisibleGoods] = useState(goods);
     const [favorites, setFavorites] = useState([]);
+    const [authors, setAuthors] = useState([]);
     const [basket, setBasket] = useState(localStorage.getItem("basket8") ? JSON.parse(localStorage.getItem("basket8")) : []);
 
     useEffect(() => {
@@ -42,10 +43,14 @@ const App = () => {
                 .then(data => {
                     setGoods(data.products);
                 })
+            api.getUsers()
+                .then(res => res.json())
+                .then(data => {
+                    setAuthors(data);
+                })
         }
     }, []) 
     useEffect(() => {
-        console.log("Change token");
         setApi(new Api(token));
         let usr = localStorage.getItem("user8");
         if (usr) {
@@ -98,7 +103,8 @@ const App = () => {
             setFavorites: setFavorites,
             PATH: PATH,
             basket,
-            setBasket
+            setBasket,
+            authors
         }}>
             <div className="wrapper">
                 <Header/>

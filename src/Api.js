@@ -43,7 +43,7 @@ class Api {
         });
     }
     getUsers() {
-        return fetch(`${this.path}/v2/group-8/users`, {
+        return fetch(`${this.path}/v2/${this.group}/users`, {
             headers: {
                 "authorization": `Bearer ${this.token}`
             }
@@ -63,22 +63,12 @@ class Api {
             }
         })
     }
-    changeUserInfo(body) {
-        return fetch(`${this.path}/v2/group-8/users/me`, {
+    updUser(body, img = false) {
+        return fetch(`${this.path}/v2/${this.group}/users/me${img ? "/avatar" : ""}`, {
             method: "PATCH",
             headers: {
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${this.token}`
-            },
-            body: JSON.stringify(body)
-        })
-    }
-    changeUserAvatar(body) {
-        return fetch(`${this.path}/v2/group-8/users/me/avatar`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                "authorization": `Bearer ${this.token}`
+                "authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(body)
         })
