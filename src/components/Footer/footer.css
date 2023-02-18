@@ -1,11 +1,12 @@
 footer{
+    background-color: #fbeec1;
     background-color: rgb(243, 231, 5);
+
     color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0 calc(50% - 600px);
 }
 
 @media (max-width: 1260px) {
@@ -14,18 +15,14 @@ footer{
     }
 }
 
-.footer__copy{
-    font-size: 1.5em;
-}
-
 .footer__text{
     text-align: right;
 }
 
 .footer {
     border-radius: 0px;
-    padding-top: 75px;
-    padding-bottom: 75px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   .soc__item {
     display: flex;
@@ -37,7 +34,6 @@ footer{
     text-decoration: none;
   }
   .footer__logo{
-    font-family: Forum;
     font-style: normal;
     font-weight: normal;
     font-size: 28px;
@@ -49,12 +45,8 @@ footer{
 
   } 
   .footer__link{
-    font-family: Roboto;
     font-style: normal;
-    font-weight: 100;
-    font-size: 22px;
-    line-height: 50px;
-    
+    font-weight: 100;   
     letter-spacing: 2px;
     text-decoration: none;
   }
@@ -62,7 +54,7 @@ footer{
   .footer__wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     
   }
  .footer__social{
@@ -77,4 +69,9 @@ footer{
 
   .footer__list li{
     list-style-type: none;
+  }
+
+  .social-media{
+    display: flex;
+    justify-content: space-evenly;
   }

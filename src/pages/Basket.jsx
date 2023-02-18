@@ -18,6 +18,7 @@ export default () => {
         }
         setGds(arr);
     }, [basket, goods])
+
     return <>
         <h1>Корзина</h1>
         {basket.length > 0 && gds.length > 0 

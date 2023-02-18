@@ -1,9 +1,10 @@
 import React, {useContext} from "react";
-import { Star, StarFill } from "react-bootstrap-icons"
+import { Star, StarFill, Trash3} from "react-bootstrap-icons"
 import Ctx from "../../Ctx";
+import "./review.css";
 
-export default ({author, rating, created_at, text}) => {
-    const {authors} = useContext(Ctx);
+export default ({author, rating, created_at, text, _id, productId, setProduct}) => {
+    const {authors,api, user,} = useContext(Ctx);
     const person = authors.filter(a => a._id === author)[0];
     const setRating = (n) => {
         let stars = [];
@@ -15,10 +16,33 @@ export default ({author, rating, created_at, text}) => {
         }
         return stars;
     }
+
+    const remove = () => {
+        api.deleteReview(productId, _id)
+        .then(res => res.json())
+        .then(data => {
+            if(!data.error) {
+                setProduct(data);
+            }
+        })
+    };
+ 
     return <>
-        <h3>{person && person.name || ""}</h3>
-        <div>{new Date(created_at).toLocaleString()}</div>
-        <div>{setRating(rating)} {text}</div>
+        <div className="rev">      
+            {person && person.name && person.name === user.name && <button 
+                    onClick={remove} 
+                    className="btn-rem">
+                        <Trash3 />
+                </button>
+            }
+            <div className="one-review">
+                <h3>{person && person.name || ""}</h3>
+                <div>{new Date(created_at).toLocaleString()}</div>
+                <div>{setRating(rating)} </div>
+                <div>{text}</div> 
+            </div>
+        </div>
+        
         
     </>
 }

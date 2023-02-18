@@ -2,14 +2,27 @@ import React, {useState, useEffect, useContext} from "react";
 import {useParams, Link, useNavigate} from "react-router-dom";
 import Review from "../components/Review/review";
 import Ctx from "../Ctx";
-import { Trash3, Truck, PatchCheck} from "react-bootstrap-icons";
+import {Star, StarFill, Trash3, Truck, PatchCheck} from "react-bootstrap-icons";
 import "../pages/style.css";
+import ReviewForm from "../components/ReviewForm/ReviewForm";
 
 export default () => {
     const {api, PATH, user, setGoods} = useContext(Ctx);
     const {id} = useParams();
     const [product, setProduct] = useState({});
+    const [open, setOpen] = useState(false);
     const navigate = useNavigate();
+
+    const setRating = (n) => {
+        let stars = [];
+        for (let i = 0; i < n; i++) {
+            stars.push(<StarFill key={i}/>);
+        }
+        for (let i = stars.length; i < 5; i++) {
+            stars.push(<Star key={i}/>);
+        }
+        return stars;
+    }
 
     useEffect(() => {
         api.getProduct(id)
@@ -19,12 +32,14 @@ export default () => {
             })
     }, []);
 
+    const addReview = () => setOpen(!open);
+    
+
     const discountPrice = Math.round(product.price - (product.price * product.discount) / 100);
     const remove = () => {
         api.delProduct(id)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(!data.error) {
                 setGoods(prev => prev.filter(g => g._id !== data._id));
                 navigate(`${PATH}catalog`);
@@ -97,9 +112,17 @@ export default () => {
 
 
                 <div className="product-description">
+                    
+                    <p> Cредняя оценка товара: {product.reviews && product.reviews.length > 0 && (product.reviews.reduce((acc,cur)=>{
+                            return acc+cur.rating
+                        } ,0) / product.reviews.length).toFixed(2)} <br/>
+                        {setRating (Math.round(product.reviews && product.reviews.length > 0 && (product.reviews.reduce((acc,cur)=>{
+                            return acc+cur.rating
+                        } ,0) / product.reviews.length).toFixed(2)))}  
+                    </p>
                     <span>Описание</span>
                     <p>{product.description}</p>
-
+                    
                     <span>Характеристики</span>
                     <div className="product-desc">
                         <div>Вес</div>
@@ -111,12 +134,17 @@ export default () => {
                     </div>
             
                     <span>Отзывы</span>
-                    <button className="btn-review">Написать отзыв</button>
+                    <button className="btn-review" onClick={addReview}>Написать отзыв</button>
+                    {open && (
+                        <div>   
+                            <ReviewForm id ={product._id} setProduct={setProduct} setOpen={setOpen}/>
+                        </div>
+                    )}
                     <div className="reviews">
                         {product.reviews && product.reviews.length > 0 &&
                         product.reviews.map((el, i) =>
-                            <Review {...el} key={i} />
-                        )}
+                            <Review {...el} key={i} productId={product._id} setProduct={setProduct}/>
+                        ).reverse()}
                     </div>
                 </div>
             </div>

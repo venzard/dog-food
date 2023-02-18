@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import AddForm from "./pages/AddForm";
 import Favorites from "./pages/Favorites";
 import Basket from "./pages/Basket";
+import Datafake from "./assets/data.json"
 
 import {Api} from "./Api";
 import Ctx from "./Ctx";
@@ -110,7 +111,7 @@ const App = () => {
                 <Header/>
                 <main className="py-4">
                     <Routes>
-                        <Route path={PATH} element={<Home data={smiles}/>}/>
+                        <Route path={PATH} element={<Home data={Datafake}/>}/>
                         <Route path={PATH +  "catalog"} element={<Catalog data={smiles}/>}/>
                         <Route path={PATH + "profile"} element={<Profile/>}/>
                         <Route path={PATH +"catalog/:id"} element={<Product/>}/>

@@ -1,0 +1,19 @@
+.rev{	
+    margin-top: 15px;
+    font-size: 1rem;
+    padding: 10px 15px;
+    margin: 10px 10px;
+    border-radius: 1rem;
+    border: 1px solid silver;	
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.btn-rem {
+    right: 8px;
+    top: 8px;
+    position: absolute;
+    font-size: 24px;
+    background-color: #fff;
+    border: none;
+}
