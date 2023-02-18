@@ -60,7 +60,8 @@ export default () => {
                 </button>
             }
 
-            <h2 className="product-header">{product.name || "Страница товара"}</h2>
+            <h3 className="product-header">{product.name || "Страница товара"}</h3>
+            <div>Всего отзывов: {product.reviews && product.reviews.length}</div>
             
             <div className="product-container">
 

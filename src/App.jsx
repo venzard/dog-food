@@ -37,6 +37,15 @@ const App = () => {
     const [authors, setAuthors] = useState([]);
     const [basket, setBasket] = useState(localStorage.getItem("basket8") ? JSON.parse(localStorage.getItem("basket8")) : []);
 
+    const dataShow = [];
+        for (let i=0; i < 8;) {
+            let j = Math.floor(Math.random() * 16);
+            if(!dataShow.includes(Datafake[j])) {
+                dataShow.push(Datafake[j]);
+                i++;
+            }
+        }
+
     useEffect(() => {
         if (token) {
             api.getProducts()
@@ -111,10 +120,10 @@ const App = () => {
                 <Header/>
                 <main className="py-4">
                     <Routes>
-                        <Route path={PATH} element={<Home data={Datafake}/>}/>
-                        <Route path={PATH +  "catalog"} element={<Catalog data={smiles}/>}/>
+                        <Route path={PATH} element={<Home data={dataShow}/>}/>
+                        <Route path={PATH + "catalog"} element={<Catalog data={smiles}/>}/>
                         <Route path={PATH + "profile"} element={<Profile/>}/>
-                        <Route path={PATH +"catalog/:id"} element={<Product/>}/>
+                        <Route path={PATH + "catalog/:id"} element={<Product/>}/>
                         <Route path={PATH + "add"} element={<AddForm/>}/>
                         <Route path={PATH + "favorites"} element={<Favorites/>}/>
                         <Route path={PATH + "basket"} element={<Basket/>}/>

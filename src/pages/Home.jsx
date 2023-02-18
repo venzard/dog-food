@@ -5,16 +5,12 @@ import "./style.css"
 import pic from "../components/Images/adv-1.jpg";
 import Ctx from "../Ctx";
 
+
+
+
 export default ({data})=>{
     const {PATH} = useContext(Ctx);
-    const dataShow = [];
-        for (let i=0; i < 8;) {
-            let j = Math.floor(Math.random() * 16);
-            if(!dataShow.includes(data[j])) {
-                dataShow.push(data[j]);
-                i++;
-            }
-        }
+    
 
     return(
         <>
@@ -31,7 +27,7 @@ export default ({data})=>{
         </div>
         <br></br>
         <div className="cards">
-            {dataShow.map((el, i) => <Card {...el} key={"card_" + i} />)}
+            {data.map((el, i) => <Card {...el} key={"card_" + i} />)}
         </div>
         </>
 

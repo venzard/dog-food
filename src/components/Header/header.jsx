@@ -20,7 +20,6 @@ export default () => {
     return <header>
         <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link>
         <Search/>
-        {/* <input type="search" placeholder="Поиск..." className="search"/> */}
         <nav className="menu">
             {/* true && true */}
             {user && <Link to={PATH + "add"}><PlusCircle style={{fontSize: "20px"}}/></Link>}
@@ -28,7 +27,6 @@ export default () => {
             {!user && <a href="" onClick={logIn}>Войти</a>}        
             {user && <Link to={PATH + "favorites"} className="badge-link">
                 <HeartFill style={{fontSize: "20px"}}/>
-                {/* <Badge bg="danger" text="light">{favorites.length}</Badge> */}
                 <Badge bg="light" text="dark">{favorites.length}</Badge>
             </Link>}
             {user && <Link to={PATH + "basket"} className="badge-link">

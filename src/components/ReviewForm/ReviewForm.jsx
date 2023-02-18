@@ -9,8 +9,8 @@ export default ({id,setProduct,setOpen}) => {
     const handler = (e) => {
         e.preventDefault();
         let body = {
-            rating: rating || "Название отсутствует",
-            text: text || "Тут скоро появится описание товара",
+            rating: rating || "Рейтинг",
+            text: text || "Описание",
         }
         api.addReview(id,body)
             .then(res => res.json())

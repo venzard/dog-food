@@ -8,17 +8,29 @@ import Row from "../components/Row/row";
 
 export default () => {
     const [gds, setGds] = useState([]);
-    const {basket, goods, PATH} = useContext(Ctx);
+
+    const discountPrice=(product)=>{
+       return Math.round(product.price - (product.price * product.discount) / 100);
+    }
+        
+    let {basket, goods, PATH} = useContext(Ctx);
+
     useEffect(() => {
         let arr = [];
         if (goods.length) {
+            basket = basket.filter(item => item && item.id && item);
             basket.forEach(el => {
-                arr.push(goods.filter(g => g._id === el.id)[0])
+                arr.push(goods.filter(g => g._id === el.id)[0]) // проверка на undef ???
             })
         }
         setGds(arr);
     }, [basket, goods])
 
+
+    const search=(id)=>{
+        return goods.find(el => el._id === id)
+    }
+    
     return <>
         <h1>Корзина</h1>
         {basket.length > 0 && gds.length > 0 
@@ -33,14 +45,16 @@ export default () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {basket.map((el, i) => <Row key={el.id} {...gds[i]} {...el} />)}
+                        {basket.map((el, i) => search(el.id) && <Row key={el.id} {...search(el.id)} {...el} />)} 
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colSpan={3} className="text-end fw-bold fs-3">ИТОГО:</td>
                             <td className="fw-bold fs-3">
                                 {basket.reduce((acc, el, i) => {
-                                    acc += el.cnt * gds[i].price;
+                                    if (search(el.id)){
+                                        acc += el.cnt * discountPrice(search(el.id));
+                                    }
                                     return acc;
                                 }, 0)}₽
                             </td>
