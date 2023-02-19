@@ -9,7 +9,7 @@ export default () => {
     // data => goods
     // searchGoods => setVisibleGoods
     const navigate = useNavigate();
-    const {goods, setVisibleGoods, PATH} = useContext(Ctx);
+    const {goods, setVisibleGoods, PATH, visibleGoods} = useContext(Ctx);
     const [text, updateText] = useState("");
     const [searchData, setSearchData] = useState(goods);
     const clearSearch = () => {
@@ -24,6 +24,7 @@ export default () => {
         setSearchData(arr);
         setVisibleGoods(arr);
     }
+
     return <div className="search-block">
         <input placeholder="Поиск..." value={text} onChange={search}/>
         <button>{text ? <CloseImg onClick={clearSearch}/> : <SearchImg/>}</button>

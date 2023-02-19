@@ -107,7 +107,7 @@ export default () => {
                             `url(${pictures})` : 
                             "url(https://epicagroup.ru/assets/components/system_catalog/admin_panel/img/1dd7a9247e23850cf6e3e2ed25e5539ef72bbe15.jpg)"
                     }}/>
-                    <Form.Group className="mb-3">
+                    <Form.Group required className="mb-3">
                         <Form.Label>Изображение</Form.Label>
                         <Form.Control
                             type="url"

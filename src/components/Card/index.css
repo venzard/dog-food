@@ -22,3 +22,19 @@
 .card>.btn {
     width: max-content;
 }
+
+.disc-price{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background: red;
+    font-weight: 700;
+    color: white;
+    border-radius: 35%;
+    width: 60px;
+    height: 45px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 10px;
+
+}

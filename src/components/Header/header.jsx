@@ -12,16 +12,11 @@ export default () => {
         e.preventDefault();
         setModalActive(prev => !prev);
     }
-    const logOut = (e) => {
-        e.preventDefault();
-        localStorage.removeItem("user8");
-        setUser("");
-    }
+    
     return <header>
         <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link>
         <Search/>
         <nav className="menu">
-            {/* true && true */}
             {user && <Link to={PATH + "add"}><PlusCircle style={{fontSize: "20px"}}/></Link>}
             {user && user.name && <Link to={PATH + "profile"}>{user.name}</Link>}
             {!user && <a href="" onClick={logIn}>Войти</a>}        

@@ -2,11 +2,10 @@ import React, {useContext, useState, useEffect} from "react";
 import "./index.css";
 import Ctx from "../../Ctx";
 
-export default ({name, pictures, price, likes, _id}) => {
+export default ({name, pictures, price, discount, likes, _id}) => {
     const {user, setFavorites, api, setGoods, setBasket, setVisibleGoods} = useContext(Ctx);
     const [like, setLike] = useState(likes && likes.includes(user._id));
     const [flag, setFlag] = useState(false);
-
     const update = (e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -56,29 +55,32 @@ export default ({name, pictures, price, likes, _id}) => {
         })
     }
 
-    // useEffect(() => {
-    //     if (flag) {
-    //         api.getProducts()
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (!data.error) {
-    //                 setGoods(data.products);
-    //             }
-    //         })
-    //     }
-    // }, [like]) 
-
+    const discountPrice = Math.round(price - (price * discount) / 100);
+    console.log('a', discount)
     return <div className="card">
+        
+
+        {discount && discount !==0 
+        ? <div className="disc-price">-{discount}%</div> 
+        : null}
+
+
         <img src={pictures} alt={name} style={{height: "100px"}}/>
         {name}
-        <h6>{price} Руб.</h6>
-        <button className="btn" onClick={buy}>Купить</button>
-        <span className="card__heart" onClick={update}>
+        
+        {discount && discount !==0 
+        ? <>
+            
+            <h6> <s>{price}Руб.</s> {discountPrice} Руб.</h6> 
+        </>
+        : <h6>{price} Руб.</h6>}
+        {user && <button className="btn" onClick={buy}>Купить</button>}
+        {user && <span className="card__heart" onClick={update}>
             {
                 like 
                 ? <i className="fa-solid fa-heart"></i>
                 : <i className="fa-regular fa-heart"></i>
             }
-        </span>
+        </span>}
     </div>
 }

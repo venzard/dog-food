@@ -48,9 +48,7 @@ export default ({data}) => {
         }
     }
     useEffect(() => {
-        if (sortGoods.length === 0) {
             setSortGoods(visibleGoods);
-        }
     }, [visibleGoods]); 
     return <>
         {user && <>

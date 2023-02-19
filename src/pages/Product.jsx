@@ -7,12 +7,12 @@ import "../pages/style.css";
 import ReviewForm from "../components/ReviewForm/ReviewForm";
 
 export default () => {
-    const {api, PATH, user, setGoods} = useContext(Ctx);
+    const {api, PATH, user, setGoods, setBasket} = useContext(Ctx);
     const {id} = useParams();
     const [product, setProduct] = useState({});
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
-
+    
     const setRating = (n) => {
         let stars = [];
         for (let i = 0; i < n; i++) {
@@ -46,6 +46,25 @@ export default () => {
             }
         })
     };
+
+    const buy = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setBasket(prev => {
+            const test = prev.filter(el => el.id === id) 
+            console.log("tee", test, "pre", prev)
+            if (test.length) {
+                return prev.map(el => {
+                    if (el.id === id) {
+                        el.cnt++;
+                    }
+                    return el;
+                })
+            } else {
+                return [...prev, {id: id, cnt: 1}]
+            }
+        })
+    }
 
     return (
         <>
@@ -89,7 +108,7 @@ export default () => {
 
                         <div className="product-cart">
                             <div className="product-number"></div>
-                            <button className="product-btn-card">В корзину</button>
+                            <button className="product-btn-card" onClick={buy}>В корзину</button>
 
                         </div>
 

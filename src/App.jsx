@@ -21,6 +21,17 @@ import Ctx from "./Ctx";
 const PATH = "/";
 //const PATH = "/dog-food/";
 
+
+
+const dataShow = [];
+for (let i=0; i < 8;) {
+    let j = Math.floor(Math.random() * 15);
+    if(!dataShow.includes(Datafake[j])) {
+        dataShow.push(Datafake[j]);
+        i++;
+    }
+}
+
 const smiles = [<span>^_^</span>, "=)", "O_o", ";(", "^_0", "@_@", "–_–"];
 const App = () => {
     let usr = localStorage.getItem("user8");
@@ -37,14 +48,7 @@ const App = () => {
     const [authors, setAuthors] = useState([]);
     const [basket, setBasket] = useState(localStorage.getItem("basket8") ? JSON.parse(localStorage.getItem("basket8")) : []);
 
-    const dataShow = [];
-        for (let i=0; i < 8;) {
-            let j = Math.floor(Math.random() * 16);
-            if(!dataShow.includes(Datafake[j])) {
-                dataShow.push(Datafake[j]);
-                i++;
-            }
-        }
+   
 
     useEffect(() => {
         if (token) {

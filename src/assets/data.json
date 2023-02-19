@@ -1,6 +1,6 @@
 [
 	{
-		"id": 1,
+		"_id": "622c779c77d63f6e70967d1c",
 		"name": "Желудки утиные сушено-вяленые",
 		"price": 550,
 		"discount": 15,
@@ -14,7 +14,7 @@
 		"tags": ["new"]
 	},
 	{
-		"id": 2,
+		"_id": "622c77c377d63f6e70967d1d",
 		"name": "Куриные желудочки для собак",
 		"price": 450,
 		"discount": 10,
@@ -26,21 +26,8 @@
 		"stock": 10,
 		"pictures": "https://react-learning.ru/image-compressed/2.jpg"
 	},
-	{
-		"id": 3,
-		"name": "Крупная говяжья сушено-вяленая жилка",
-		"price": 360,
-		"discount": 0,
-		"wight": "100 г",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/3.jpg"
-	},
-	{
-		"id": 4,
+		{
+		"_id": "622c77d477d63f6e70967d1f",
 		"name": "Мелкая говяжья сушено-вяленая жилка",
 		"price": 300,
 		"discount": 0,
@@ -53,7 +40,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/4.jpg"
 	},
 	{
-		"id": 5,
+		"_id": "622c77dc77d63f6e70967d20",
 		"name": "Калтык говяжий для собак",
 		"price": 290,
 		"discount": 0,
@@ -66,7 +53,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/5.jpg"
 	},
 	{
-		"id": 6,
+		"_id": "622c77e277d63f6e70967d21",
 		"name": "Бублик из бычьего корня",
 		"price": 340,
 		"discount": 0,
@@ -79,7 +66,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/6.jpg"
 	},
 	{
-		"id": 7,
+		"_id": "622c77e877d63f6e70967d22",
 		"name": "Копыто оленье",
 		"price": 490,
 		"discount": 0,
@@ -92,7 +79,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/7.jpg"
 	},
 	{
-		"id": 8,
+		"_id": "622c77f077d63f6e70967d23",
 		"name": "Бараний рубец сушенный",
 		"price": 330,
 		"discount": 0,
@@ -105,7 +92,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/8.jpg"
 	},
 	{
-		"id": 9,
+		"_id": "622c77f677d63f6e70967d24",
 		"name": "Рубец говяжий для собак",
 		"price": 290,
 		"discount": 0,
@@ -118,7 +105,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/9.jpg"
 	},
 	{
-		"id": 10,
+		"_id": "622c77ff77d63f6e70967d25",
 		"name": "Свиные уши для собак",
 		"price": 330,
 		"discount": 0,
@@ -131,7 +118,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/10.jpg"
 	},
 	{
-		"id": 11,
+		"_id": "622c780677d63f6e70967d26",
 		"name": "Уши говяжьи для собак",
 		"price": 330,
 		"discount": 0,
@@ -144,7 +131,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/11.jpg"
 	},
 	{
-		"id": 12,
+		"_id": "622c780c77d63f6e70967d27",
 		"name": "Печенья с яблоком (печень говяжья, сердце)",
 		"price": 340,
 		"discount": 0,
@@ -157,7 +144,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/12.jpg"
 	},
 	{
-		"id": 13,
+		"_id": "622c781277d63f6e70967d28",
 		"name": "Рога оленя для собак весом до 3кг. Размер XS",
 		"price": 350,
 		"discount": 14,
@@ -170,7 +157,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/13.jpg"
 	},
 	{
-		"id": 14,
+		"_id": "622c781877d63f6e70967d29",
 		"name": "Рога оленя для собак весом от 3 до 5 кг. Размер S",
 		"price": 400,
 		"discount": 0,
@@ -183,7 +170,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/14.jpg"
 	},
 	{
-		"id": 15,
+		"_id": "622c781e77d63f6e70967d2a",
 		"name": "Рога оленя для собак весом от 5 до 10 кг. Размер M",
 		"price": 600,
 		"discount": 0,
@@ -196,7 +183,7 @@
 		"pictures": "https://react-learning.ru/image-compressed/15.jpg"
 	},
 	{
-		"id": 16,
+		"_id": "622c782577d63f6e70967d2b",
 		"name": "Рога оленя для собак весом от 10 до 30 кг. Размер L",
 		"price": 800,
 		"discount": 0,

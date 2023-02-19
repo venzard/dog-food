@@ -45,13 +45,13 @@ export default () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {basket.map((el, i) => search(el.id) && <Row key={el.id} {...search(el.id)} {...el} />)} 
+                        {basket.map((el) => search(el.id) && <Row key={el.id} {...search(el.id)} {...el} />)} 
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colSpan={3} className="text-end fw-bold fs-3">ИТОГО:</td>
                             <td className="fw-bold fs-3">
-                                {basket.reduce((acc, el, i) => {
+                                {basket.reduce((acc, el) => {
                                     if (search(el.id)){
                                         acc += el.cnt * discountPrice(search(el.id));
                                     }

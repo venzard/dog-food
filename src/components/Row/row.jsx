@@ -32,6 +32,7 @@ export default ({name, pictures, cnt, price, id}) => {
             })
         }
     }, [n]);
+    
     return <tr className="align-middle">
         <td><Image src={pictures} alt={name} height="100"/></td>
         <td>{name}</td>
