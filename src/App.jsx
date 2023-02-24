@@ -18,8 +18,8 @@ import Datafake from "./assets/data.json"
 import {Api} from "./Api";
 import Ctx from "./Ctx";
 
-const PATH = "/";
-//const PATH = "/dog-food/";
+//const PATH = "/";
+const PATH = "/dog-food/";
 
 
 

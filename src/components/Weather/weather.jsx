@@ -25,7 +25,7 @@ export default () => {
             fetchData();
         }
     }, [lat,long])
-
+    
     return (
         <div className="weather">
             {data 

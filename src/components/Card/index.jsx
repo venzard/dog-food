@@ -56,7 +56,6 @@ export default ({name, pictures, price, discount, likes, _id}) => {
     }
 
     const discountPrice = Math.round(price - (price * discount) / 100);
-    console.log('a', discount)
     return <div className="card">
         
 

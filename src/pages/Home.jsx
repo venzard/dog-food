@@ -19,7 +19,7 @@ export default ({data})=>{
             <Link className="btn-link" to={PATH + "catalog"}> Перейти в каталог </Link>
 
         <div className="adv">
-            <div>
+            <div className="adv-info">
                 <h1>-30%</h1>
                 <p>Сухой корм для собак Purina One Мини Активная с курицей и рисом</p>
             </div>

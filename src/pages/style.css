@@ -263,26 +263,26 @@ a {
     max-width: 100%;
 }
 
-.adv h1 {
+.adv-info h1 {
     font-size: 3.6em;
     line-height: 1.3;
     margin-bottom: 15px;
     justify-content: center;
     display: flex;
+    background: lightcoral;
+    font-weight: 700;
+    color: white;
+    border-radius: 15px;
+    padding: 10px 10px;
 }
 
-.adv h2 {
-    font-size: 1.6em;
-    line-height: 1.3;
-    margin-bottom: 15px;
-}
-
-.adv p {
+.adv-info p {
     font-size: 1.2em;
     line-height: 1.3;
     margin-bottom: 15px;
     justify-content: center;
     display: flex;
+    
 }
 
 .adv img {
