@@ -4,10 +4,11 @@ import {Image, Button, ButtonGroup} from "react-bootstrap";
 
 import Ctx from "../../Ctx";
 
-export default ({name, pictures, cnt, price, id}) => {
+export default ({name, pictures, cnt, price, discount, id}) => {
     const {setBasket} = useContext(Ctx);
     const [n, setN] = useState(cnt);
     const [flag, setFlag] = useState(false);
+    const discountPrice = Math.round(price - (price * discount) / 100);
     const increment = () => {
         setFlag(true);
         setN(n + 1);
@@ -43,6 +44,14 @@ export default ({name, pictures, cnt, price, id}) => {
                 <Button variant="warning" onClick={increment}>+</Button>
             </ButtonGroup>
         </td>
-        <td>{price * n}₽</td>
+        <td>
+            {discount && discount !==0 
+            ? <>
+                <s>{price*n}₽</s> {discountPrice*n}₽ 
+            </>
+            : <>
+                {price*n}₽
+            </>}         
+        </td>
     </tr>
 }

@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { Star, StarFill, Trash3} from "react-bootstrap-icons"
 import Ctx from "../../Ctx";
 import "./review.css";
+import pic from "../Images/nophoto.jpeg";
 
 export default ({author, rating, created_at, text, _id, productId, setProduct}) => {
     const {authors,api, user,} = useContext(Ctx);
@@ -36,7 +37,7 @@ export default ({author, rating, created_at, text, _id, productId, setProduct}) 
                 </button>
             }
             <div className="one-review">
-                <h3>{person && person.name || ""}</h3>
+                <h3>{person && person.name || ""} {<img src={person && person.avatar && person.avatar === "https://react-learning.ru/image-compressed/default-image.jpg" ? pic : person.avatar} alt="user avatar"/>}</h3>
                 <div>{new Date(created_at).toLocaleString()}</div>
                 <div>{setRating(rating)} </div>
                 <div>{text}</div> 

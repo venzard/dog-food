@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import Card from "../components/Card";
 import {Link} from "react-router-dom";
 import "./style.css"
-import pic from "../components/Images/adv-1.jpg";
+import pic from "../components/Images/adv.png";
 import Ctx from "../Ctx";
 
 
@@ -20,8 +20,8 @@ export default ({data})=>{
 
         <div className="adv">
             <div>
-                <h2>Подарок за<br/>первый заказ!</h2>
-                <p>Легкое говяжье - пластины</p>
+                <h1>-30%</h1>
+                <p>Сухой корм для собак Purina One Мини Активная с курицей и рисом</p>
             </div>
             <img src={pic} />
         </div>

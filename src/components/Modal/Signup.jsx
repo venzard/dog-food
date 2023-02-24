@@ -71,7 +71,7 @@ export default ({change, close}) => {
                 onChange={(e)=>{checkPwd(e.target.value,"secondary")}} 
             />
             <button className="btn" type="submit" disabled={testPwd}>Зарегистрироваться</button>
-            <button className="btn link" type="button" onClick={() => {change(prev => !prev)}}>Войти</button>
+            <button className="btn" type="button" onClick={() => {change(prev => !prev)}}>Создать аккаунт</button>
 
         </form>
 

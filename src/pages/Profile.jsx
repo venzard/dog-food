@@ -77,8 +77,8 @@ export default () => {
                     </>
                 }
             </p>
-            <p className="profile-row"><a href={`mailto:${user.email}`}>{user.email}</a></p>
-            {user.group && <p className="profile-row">{user.group}</p>}
+            {/* <p className="profile-row"><a href={`mailto:${user.email}`}>{user.email}</a></p> */}
+            {/* {user.group && <p className="profile-row">{user.group}</p>} */}
             <p><a href="" onClick={logOut} style={{color: "orange"}}>Выйти из аккаунта</a></p>
         </Col>
         <Col xs={12} md={4}>

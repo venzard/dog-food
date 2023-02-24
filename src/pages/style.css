@@ -253,7 +253,7 @@ a {
 
 .adv {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background: #f0b15e;
     border-radius: 20px;
@@ -263,6 +263,14 @@ a {
     max-width: 100%;
 }
 
+.adv h1 {
+    font-size: 3.6em;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    justify-content: center;
+    display: flex;
+}
+
 .adv h2 {
     font-size: 1.6em;
     line-height: 1.3;
@@ -270,12 +278,37 @@ a {
 }
 
 .adv p {
-    font-size: 1em;
-    line-height: 1.5;
+    font-size: 1.2em;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    justify-content: center;
+    display: flex;
 }
 
 .adv img {
     max-width: 280px;
     height: auto;
     border-radius: 10px;
+}
+
+.btn-link{
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    height: 50px;
+    text-decoration: none;
+    padding: 10px 25px;
+    background-color: rgb(243, 231, 5);
+    border-radius: 24px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border: none;
+}
+
+.btn-link:hover{
+    text-decoration: none;
+    color: rgb(243, 231, 5);
+    background-color: black;
 }
