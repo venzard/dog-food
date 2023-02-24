@@ -11,7 +11,8 @@ export default () => {
         <footer>
             <div className="footer__wrapper">
                 <div className="footer__logo">
-                    <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link>
+                    {/* <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link> для локальной сборки*/}
+                    <Link className="logo" to={PATH}><img src="https://raw.githubusercontent.com/venzard/dog-food/master/public/favicon1.ico"/>DogFood</Link>
                 </div>
 
                 <div className="footer__nav nav1">

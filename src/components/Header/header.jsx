@@ -14,7 +14,8 @@ export default () => {
     }
     
     return <header>
-        <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link>
+        <Link className="logo" to={PATH}><img src="https://raw.githubusercontent.com/venzard/dog-food/master/public/favicon1.ico"/>DogFood</Link>
+        {/* <Link className="logo" to={PATH}><img src="/img/doc-icon.svg"/>DogFood</Link> для локальной сборки */}
         <Search/>
         <nav className="menu">
             {user && <Link to={PATH + "add"}><PlusCircle style={{fontSize: "20px"}}/></Link>}
